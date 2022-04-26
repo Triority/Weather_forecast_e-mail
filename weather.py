@@ -4,14 +4,12 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-key='50ee3b0af9ea4375b2063e306dd4497b'
+key='xxxxxxxxxxxxxxxxxxxxxxxxx'
 
 list = [["12345@qq.com",'100000','Triority']
 ]
 
 def send(msg,rec_user):
-    str1='successful.'
-    str2='failure'
     mail_host="smtp.qq.com"
     send_user="12345@qq.com"
     send_pass="pass"
