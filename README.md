@@ -9,4 +9,4 @@
 
 邮箱自动发送需要填写你的授权密码send_pass!
 
-获得密钥key请访问后门网站注册账号并获取web-api应用的密钥https://dev.qweather.com
+获得密钥key请访问下面网站注册账号并获取web-api应用的密钥https://dev.qweather.com
