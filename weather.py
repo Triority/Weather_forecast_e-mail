@@ -84,23 +84,43 @@ def now_air(key,location):
     aqi = now_res_json['now']['aqi']#空气质量指数
     return category, aqi
 
-
 def txt(key,location,name):
     tm_year, tm_mon, tm_mday, tm_hour, tm_min, tm_yday = get_time()
     now_temp, now_feelsLike, now_windScale, now_windSpeed, now_windDir, now_text, now_obsTime = now_weather(key,location)
     sunrise, sunset, moonrise, moonset, tempMax, tempMin, textDay, textNight, windDirDay,  windScaleDay, windSpeedDay, precip, uvIndex, humidity = today_weather(key,location)
     category, aqi = now_air(key,location)
-    msg = 'Dear '+name+':\n早安!\n'+\
-          '今天是'+str(tm_year)+'年'+str(tm_mon)+'月'+str(tm_mday)+'日,是今年的第'+str(tm_yday)+'天了哦\n'+ \
-          '\n下面是现在实时的天气状况:\n'+\
-          '今天的空气状况为'+category+',质量指数为:'+aqi+'\n'+ \
-          '当前室外天气是'+now_text+',气温'+now_temp+'度,体感温度'+now_feelsLike+'度,刮'+now_windDir+',风力'+now_windScale+'级,速度约'+now_windSpeed+'m/s\n'+\
-          '以上信息的测量时间为'+now_obsTime+'\n'+\
-          '\n下面是今天全天的天气情况:\n'+\
-          '今天的最低气温是'+tempMin+'度,最高'+tempMax+'度,天气'+textDay+',刮'+windDirDay+',风力'+windScaleDay+'级,速度约'+windSpeedDay+'m/s\n'+\
-          '预计今天总降水量为'+precip+'毫米,紫外线指数:'+uvIndex+',相对湿度为'+humidity+'%\n'+\
-          '今天的日出时间是:'+sunrise+',日落时间:'+sunset+',月亮在'+moonrise+'升起,在'+moonset+'落下,今天夜晚天气'+textNight+'\n'+\
-          '\nSincerely wish you all the best of luck today !!!\n                                                  Triority\n                                                  '+str(tm_year)+'.'+str(tm_mon)+'.'+str(tm_mday)
+    msg ='''
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML Editor - LDDGO.NET</title>
+</head>
+<body>
+<p><span style="font-size: 14pt;">Dear '''+name+''':</span></p>
+<p><span style="font-size: 12pt;">早安!</span></p>
+<p><span style="font-size: 12pt;">今天是'''+str(tm_year)+'''年'''+str(tm_mon)+'''月'''+str(tm_mday)+'''日,是今年的第'''+str(tm_yday)+'''天了哦</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;">下面是现在实时的天气状况:</span></p>
+<p><span style="font-size: 12pt;">现在室外的空气状况为'''+category+''',质量指数为'''+aqi+'''</span></p>
+<p><span style="font-size: 12pt;">今天早上天气'''+now_text+''',气温'''+now_temp+'''度,体感温度'''+now_feelsLike+'''度,</span></p>
+<p><span style="font-size: 12pt;">刮'''+now_windDir+''',风力'''+now_windScale+'''级,速度约'''+now_windSpeed+'''m/s</span></p>
+<p><span style="font-size: 12pt;">以上信息的测量时间为'''+now_obsTime+'''</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;">下面是今天全天的天气情况:</span></p>
+<p><span style="font-size: 12pt;">今天白天天气'''+textDay+''',最低气温是'''+tempMin+'''度,最高'''+tempMax+'''度,</span></p>
+<p><span style="font-size: 12pt;">刮'''+windDirDay+''',风力'''+windScaleDay+'''级,速度约'''+windSpeedDay+'''m/s</span></p>
+<p><span style="font-size: 12pt;">预计今天总降水量为'''+precip+'''毫米,紫外线指数'''+uvIndex+''',相对湿度为'''+humidity+'''.</span></p>
+<p><span style="font-size: 12pt;">今天的日出时间是:'''+sunrise+''',日落时间:'''+sunset+''',月亮在'''+moonrise+'''升起,在'''+moonset+'''落下,</span></p>
+<p><span style="font-size: 12pt;">今天夜晚天气'''+textNight+'''</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;">Sincerely wish you all the best of luck today !!!</span></p>
+<p>&nbsp;</p>
+<p style="text-align: right;"><span style="font-size: 12pt;">Triority</span></p>
+<p style="text-align: right;"><span style="font-size: 12pt;">'''+str(tm_year)+'''.'''+str(tm_mon)+'''.'''+str(tm_mday)+'''</span></p>
+</body>
+</html>
+    '''
     return msg
 
 
